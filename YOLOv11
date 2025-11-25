@@ -1,0 +1,24 @@
+from ultralytics import YOLO
+if __name__ == "__main__":
+# Load YOLOv10n model from scratch
+    model = YOLO("C:/trash/runs/YOLOv11s_fine_tune/weights/11s_best.pt")
+
+
+# Train the model
+    model.train(
+   data="C:/trash/fine/data.yaml",
+    imgsz=640,
+    epochs=50,            # 짧게
+    batch=28,             # 해상도↑면 배치 약간↓
+    lr0=0.0006,
+    warmup_epochs=4,
+    cos_lr=True,
+    patience=10,
+    close_mosaic=8,
+    optimizer="AdamW",
+    amp=True,
+    seed=0,
+    project="C:/trash/runs", 
+    name="YOLOv11s_fine_trash", exist_ok=True
+    )
+
